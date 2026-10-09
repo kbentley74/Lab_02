@@ -129,6 +129,21 @@ plastic_data_all %>%
 ```{r Ex4, message = FALSE}
 # Write your code here to answer exercise 4
 
+plastic_data_all <- plastic_data_all %>%
+  rename(
+    pop = "population",
+    mp = "mismanaged_plastic",
+    mpo = mismanaged_plastic_ocean
+  )
+
+plastic_data_all %>% 
+  mutate(
+    region = str_replace_all(region,"Latin America and The Caribbean", "LAC")
+  ) |> 
+  group_by(region) |> 
+  summarise(
+    n()
+  )
 
 
 ```
